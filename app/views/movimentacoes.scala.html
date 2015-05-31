@@ -1,0 +1,58 @@
+@(ind:Integer)
+@main(ind){
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Movimentações
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active">
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-info-circle"></i>  <strong> Abaixo está listado as operações realizadas com o caixa!</strong>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Tabela</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>OPERAÇAO</th>
+                            <th>VALOR</th>
+                            <th>DATA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(o<-SGDB.getAllOperacoes){
+                            <tr>
+                                <td>@o.getId</td>
+                                <td>@o.getDescricao</td>
+                                <td>@o.getValor</td>
+                                <td>@o.getData</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+}

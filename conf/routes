@@ -1,0 +1,41 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                             controllers.Application.index()
+GET         /admin                        controllers.Application.renderAdmin()
+GET         /cantinas                     controllers.Application.renderCantinas()
+GET         /doacao                       controllers.Application.renderDoacao()
+GET         /movimentacoes                controllers.Application.renderMovimentacoes()
+GET         /repertorio                   controllers.Application.renderRepertorio()
+
+POST        /add/cantina                  controllers.Application.addCantina()
+POST        /add/doacao                   controllers.Application.addDoacao()
+POST        /add/componente               controllers.Application.addComponente()
+POST        /add/view                     controllers.Application.addView()
+POST        /add/oferta                   controllers.Application.addOferta()
+POST        /add/sugestao                 controllers.Application.addSugestao()
+POST        /add/operacao                 controllers.Application.addOperacao()
+POST        /add/musica                   controllers.Application.addMusica()
+POST        /add/atividade                controllers.Application.addAtividade()
+
+GET         /remove/cantina/:id           controllers.Application.removeCantina(id: Long)
+GET         /remove/doacao/:id            controllers.Application.removeDoacao(id: Long)
+GET         /remove/componente/:id        controllers.Application.removeComponente(id: Long)
+GET         /remove/view/:id              controllers.Application.removeView(id: Long)
+GET         /remove/oferta/:id            controllers.Application.removeOferta(id: Long)
+GET         /remove/sugestao/:id          controllers.Application.removeSugestao(id: Long)
+GET         /remove/operacao/:id          controllers.Application.removeOperacao(id: Long)
+GET         /remove/musica/:id            controllers.Application.removeMusica(id: Long)
+GET         /remove/atividade/:id         controllers.Application.removeAtividade(id: Long)
+
+GET         /setview/:id/:value           controllers.Application.setView(id: Long, value: String)
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                 controllers.Assets.at(path="/public/assets/", file)
+GET         /remove/assets/*file          controllers.Assets.at(path="/public/assets/", file)
+GET         /add/assets/*file             controllers.Assets.at(path="/public/assets/", file)
+

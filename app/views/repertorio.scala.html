@@ -1,0 +1,113 @@
+@(ind:Integer)
+
+@main(ind){
+
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+               Repertório
+            </h1>
+            <ol class="breadcrumb">
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4>Formulário de Sugestão</h4>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <form method="post" action="/add/sugestao">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label>Sugestão:</label>
+                                <input type="text" name="musica" class="form-control" placeholder="Digite a música.." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nome:</label>
+                                <input type="text" name="nome" class="form-control" placeholder="Digite seu Nome..." required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-group-justified">Sugerir</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-info-circle"></i>  <strong> Abaixo está listado o repertório da banda!</strong></a>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+
+            <h2>Musicas</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>MUSICA</th>
+                            <th>CIFRA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(m<-SGDB.getAllMusicas){
+                            <tr>
+                                <td>@m.getTitulo</td>
+                                <td>
+                                    <a href="@m.getLink">
+                                        @m.getLink
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            @for(s<-SGDB.getAllSugestoes){
+                <div class="col-lg-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <center><div class="huge">@s.getContent</div></center>
+                                    <div>Nome: @s.getNome</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,54 @@
+@(ind:Integer)
+
+@main(ind){
+
+
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Doações
+            </h1>
+            <ol class="breadcrumb">
+
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-info-circle"></i>  <strong> Abaixo está listado as doações feitas!</strong>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        @for(d<-SGDB.getAllDoacoes){
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <center><div class="huge">Valor: @d.getValor</div></center>
+                                <div>@d.getData</div>
+                                <div>Nome: @d.getNome</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+
+
+    </div>
+    <!-- /.row -->
+}

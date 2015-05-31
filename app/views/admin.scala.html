@@ -1,0 +1,493 @@
+@(ind:Integer)
+
+@main(ind){
+    <div class="container-fluid">
+
+            <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Dashboard <small></small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Admin
+                    </li>
+                </ol>
+            </div>
+        </div>
+            <!-- /.row -->
+
+
+
+        <div class="row">
+            <div class="col-lg-3">
+                <h2>View</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>VALUE</th>
+                                <th>1</th>
+                                <th>0</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(v <- SGDB.getAllViews){
+                                <tr>
+                                    <td>@SGDB.getComponente(v.getIdcomponente).getNome</td>
+                                    <td>@v.getValor</td>
+                                    <td><a href="/setview/@v.getId/1"><span class="fa fa-thumbs-o-up"></span> </a></td>
+                                    <td><a href="/setview/@v.getId/0"><span class="fa fa-thumbs-o-down"></span> </a> </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h2>Componente</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(c <- SGDB.getAllComponentes){
+                                <tr>
+                                    <td>@c.getId</td>
+                                    <td>@c.getNome</td>
+                                    <td><a href="/remove/componente/@c.getId"><span class="fa fa-trash-o"></span> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h2>Oferta</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>DATE</th>
+                                <th>VALUE</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(o <- SGDB.getAllOfertas){
+                                <tr>
+                                    <td>@SGDB.getComponente(o.getIdcomponente).getNome</td>
+                                    <td>@o.getData</td>
+                                    <td>@o.getValor</td>
+                                    <td><a href="/remove/oferta/@o.getId"><span class="fa fa-trash-o"></span> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h2>Sugestao</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(s <- SGDB.getAllSugestoes){
+                                <tr>
+                                    <td>@s.getId</td>
+                                    <td>@s.getNome</td>
+                                    <td><a href="/remove/sugestao/@s.getId"><span class="fa fa-trash-o"></span> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+            <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-3">
+                <h2>Cantina</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>DATA</th>
+                                <th>LUCRO</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(cantina <- SGDB.getAllCantinas){
+                                <tr>
+                                    <td>@cantina.getData</td>
+                                    <td>@cantina.getLucro</td>
+                                    <td><a href="/remove/cantina/@cantina.getId"><span class="fa fa-trash-o"></span> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h2>Doacao</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>VALUE</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(d<-SGDB.getAllDoacoes){
+                                <tr>
+                                    <td>@d.getNome</td>
+                                    <td>@d.getValor</td>
+                                    <td><a href="/remove/doacao/@d.getId"><span class="fa fa-trash-o"></span> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h2>Operacao</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(op <- SGDB.getAllOperacoes){
+                                <tr>
+                                    <td>@op.getId</td>
+                                    <td>@op.getValor</td>
+                                    <td><a href="/remove/operacao/@op.getId"><span class="fa fa-trash-o"></span> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h2>Musica</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>BANDA</th>
+                                <th>TITULO</th>
+                                <th>?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @for(mu <- SGDB.getAllMusicas){
+                            <tr>
+                                <td>@mu.getBanda</td>
+                                <td>@mu.getTitulo</td>
+                                <td><a href="/remove/musica/@mu.getId"><span class="fa fa-trash-o"></span> </a></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#addoferta">+ Oferta</button>
+                <button class="btn btn-block btn-default" data-toggle="modal" data-target="#addcomponente">+ Componente</button>
+                <button class="btn btn-block btn-info" data-toggle="modal" data-target="#addcantina">+ Cantina</button>
+                <button class="btn btn-block btn-warning" data-toggle="modal" data-target="#addoperacao">+ Operaçao</button>
+                <button class="btn btn-block btn-default" data-toggle="modal" data-target="#addmusica">+ Musica</button>
+                <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#adddoacao">+ Doacao</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="adddoacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Doacao</h4>
+                </div>
+                <form method="post" action="/add/doacao">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>Data</label>
+                                    <input type="date" class="form-control" name="data" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dia</label>
+                                    <input type="text" class="form-control" name="dia" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" name="nome" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" name="valor" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addmusica" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Musica</h4>
+                </div>
+                <form method="post" action="/add/musica">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>Titulo</label>
+                                    <input type="text" class="form-control" name="titulo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Banda</label>
+                                    <input type="text" class="form-control" name="banda" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tom</label>
+                                    <input type="text" class="form-control" name="tom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link</label>
+                                    <input type="text" class="form-control" name="link" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addoperacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Operacao</h4>
+                </div>
+                <form method="post" action="/add/operacao">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>Data</label>
+                                    <input type="date" class="form-control" name="data" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" name="valor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descricao</label>
+                                    <input type="text" class="form-control" name="descricao" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addcantina" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Cantina</h4>
+                </div>
+                <form method="post" action="/add/cantina">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>Dia</label>
+                                    <input type="text" class="form-control" name="dia" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Data</label>
+                                    <input type="date" class="form-control" name="data" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gasto</label>
+                                    <input type="text" class="form-control" name="gasto" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Lucro</label>
+                                    <input type="text" class="form-control" name="lucro" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descricao</label>
+                                    <input type="text" class="form-control" name="descricao" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addcomponente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Componente</h4>
+                </div>
+                <form method="post" action="/add/componente">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" name="nome" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addoferta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Oferta</h4>
+                </div>
+                <form method="post" action="/add/oferta">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>Data</label>
+                                    <input type="date" class="form-control" name="data" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Componente</label>
+                                    <select class="form-control" name="id">
+                                        @for(com <- SGDB.getAllComponentes){
+                                            <option value="@com.getId">@com.getNome</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" name="valor" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="setview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Set View</h4>
+                </div>
+                <form method="post" action="/add/setview">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group">
+                                    <label>ID</label>
+                                    <input type="text" class="form-control" name="id" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>NOME</label>
+                                    <input type="text" class="form-control" name="nome" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" name="valor">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Setar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+}
